@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ORYGINAL-DEBT_SIM"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.SimulationActivity">
+
+    <TextView
+        android:id="@+id/FIRST_NAME_TEXT_VIEW_SIM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="FirstName"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/LAST_NAME_TEXT_VIEW_SIM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="LastName"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/FIRST_NAME_TEXT_VIEW_SIM"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/PHONE_NUMBER_TEXT_VIEW_SIM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="PhoneNumber"
+        android:textColor="#4CAF50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FIRST_NAME_TEXT_VIEW_SIM" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/SIMULATE_BTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="onClickStartSimulation"
+        android:tint="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_media_play" />
+
+    <TextView
+        android:id="@+id/ORIGINAL_DEBT_SIM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:text="Original debt:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PHONE_NUMBER_TEXT_VIEW_SIM" />
+
+    <TextView
+        android:id="@+id/ORIGINAL_DEBT_VALUE_SIM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintStart_toEndOf="@+id/ORIGINAL_DEBT_SIM"
+        app:layout_constraintTop_toBottomOf="@+id/PHONE_NUMBER_TEXT_VIEW_SIM"
+        tools:text="$debtValue" />
+
+    <TextView
+        android:id="@+id/SPEED_DEBT_TEXT_VIEW_SIM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Speed of debt:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ORIGINAL_DEBT_SIM" />
+
+    <EditText
+        android:id="@+id/SPEED_DEBT_INPUT_VALUE_SIM"
+        android:layout_width="129dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="140dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/SPEED_DEBT_TEXT_VIEW_SIM"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/PERCENT_TEXT_VIEW_SIM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Percentage of commission:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SPEED_DEBT_TEXT_VIEW_SIM" />
+
+    <EditText
+        android:id="@+id/PERCENT_INPUT_VALUE_SIM"
+        android:layout_width="115dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="178dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/PERCENT_TEXT_VIEW_SIM"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/INTEREST_TEXT_VIEW_SIM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Interest payable:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PERCENT_TEXT_VIEW_SIM" />
+
+    <TextView
+        android:id="@+id/INTEREST_VALUE_SIM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="0.0"
+        android:textColor="#F44336"
+        app:layout_constraintStart_toEndOf="@+id/INTEREST_TEXT_VIEW_SIM"
+        app:layout_constraintTop_toBottomOf="@+id/PERCENT_TEXT_VIEW_SIM" />
+
+    <TextView
+        android:id="@+id/DEBT_INTEREST_TEXT_VALUE_SIM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Debt with interest:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/INTEREST_TEXT_VIEW_SIM" />
+
+    <TextView
+        android:id="@+id/DEBT_INTEREST_VALUE_SIM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="0.0"
+        android:textColor="#673AB7"
+        app:layout_constraintStart_toEndOf="@+id/DEBT_INTEREST_TEXT_VALUE_SIM"
+        app:layout_constraintTop_toBottomOf="@+id/INTEREST_VALUE_SIM" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Tightwad</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="debt">Debt</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="pln">PLN</string>
+    <string name="valuepln">valuePLN</string>
+</resources>
