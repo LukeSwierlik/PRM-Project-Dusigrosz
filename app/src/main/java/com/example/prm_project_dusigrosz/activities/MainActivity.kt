@@ -58,20 +58,32 @@ class MainActivity : AppCompatActivity() {
 
         cursor.close()
 
-        val sumDebt: Double = users.fold(0.0) { initial, user -> initial + user.debt  }
-        SUM_DEBT_VALUE.text = sumDebt.toString()
+        calculateSumOfDebt(users)
 
         RECYCLER_VIEW_CARDS.layoutManager = LinearLayoutManager(applicationContext)
         RECYCLER_VIEW_CARDS.adapter =
             CardViewAdapter(
                 applicationContext,
                 db,
-                users
+                users,
+                MainActivity::calculateSumOfDebt,
+                this
             )
     }
 
     fun onClickUserDetails(view: View) {
         val intent = Intent(applicationContext, DetailsActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun calculateSumOfDebt(users: ArrayList<UserViewModel>) {
+        val sumDebt: Double = users.fold(0.0) { initial, user -> initial + user.debt }
+
+        if (sumDebt <= 0.0) {
+            EMPTY_STATE_CONTAINER.visibility = View.VISIBLE
+            LIST_CONTAINER.visibility = View.INVISIBLE
+        }
+
+        SUM_DEBT_VALUE.text = sumDebt.toString()
     }
 }

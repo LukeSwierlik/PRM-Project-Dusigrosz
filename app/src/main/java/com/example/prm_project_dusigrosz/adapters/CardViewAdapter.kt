@@ -18,13 +18,15 @@ import com.example.prm_project_dusigrosz.models.UserViewModel
 import com.example.prm_project_dusigrosz.objects.Fields
 import com.example.prm_project_dusigrosz.utils.MyViewHolder
 import kotlinx.android.synthetic.main.activity_card_view.view.*
-import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlin.math.roundToInt
+import kotlin.reflect.KFunction2
 
 class CardViewAdapter(
     private val mContext: Context,
     private val mDb: SQLiteDatabase,
-    private val mUsers: ArrayList<UserViewModel>
+    private val mUsers: ArrayList<UserViewModel>,
+    private val calculateSumOfDebt: KFunction2<MainActivity, ArrayList<UserViewModel>, Unit>,
+    private val mainActivity: MainActivity
 ): RecyclerView.Adapter<MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -106,13 +108,7 @@ class CardViewAdapter(
             builder.setPositiveButton("Yes") { _, _ ->
                 removeUser(holder.adapterPosition)
 
-                // TODO: A problem with a smooth refresh of the sum of debt on Main activity.
-                //  The following solution refreshes all Main activity, which shows a "blink".
-//                val sumDebt: Double = mUsers.fold(0.0) { initial, user -> initial + user.debt  }
-//                val intentMainActivity = Intent(context, MainActivity::class.java)
-//                intentMainActivity.putExtra("sumDebt", sumDebt)
-//
-//                context.startActivity(intentMainActivity)
+                calculateSumOfDebt(mainActivity, mUsers)
             }
 
             builder.setNegativeButton("No") { _, _ ->
