@@ -3,7 +3,6 @@ package com.example.prm_project_dusigrosz.activities
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -27,11 +26,8 @@ class SimulationActivity : AppCompatActivity() {
 
     private var mTask: Runnable = object: Runnable {
         override fun run() {
-
-            // TODO: When mSpeedDebt and mPercentCommission are zero, there is a problem with the button icon being changed.
             if (mCurrentDebt <= 0.0 || mCurrentDebt == mOriginalDebt) {
-                mStatusSimulation =
-                    StatusSimulation.RESET
+                mStatusSimulation = StatusSimulation.RESET
                 stopTask()
             } else {
                 updateValues()
@@ -131,13 +127,13 @@ class SimulationActivity : AppCompatActivity() {
     }
 
     private fun startTask() {
-        mTask.run()
         SIMULATE_BTN.setImageResource(android.R.drawable.ic_media_pause)
+        mTask.run()
     }
 
     private fun stopTask() {
-        mMainHandler.removeCallbacks(mTask)
         SIMULATE_BTN.setImageResource(android.R.drawable.ic_media_play)
+        mMainHandler.removeCallbacks(mTask)
     }
 
     private fun resetTask() {
