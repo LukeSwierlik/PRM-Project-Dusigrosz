@@ -3,7 +3,6 @@ package com.example.prm_project_dusigrosz.activities
 import android.content.ContentValues
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
-import android.net.Uri
 import android.os.Bundle
 import android.provider.BaseColumns
 import android.view.Menu
@@ -95,13 +94,15 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     fun onClickReminderUser(view: View) {
-        val smsIntent = Intent()
-        val phoneNumber = PHONE_NUMBER_EDIT_TEXT_DETAILS.text.toString()
+        val sendIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, "Where is my money?")
+            type = "text/plain"
+        }
 
-        smsIntent.data = Uri.parse("sms:$phoneNumber")
-        smsIntent.action = Intent.ACTION_VIEW
+        val shareIntent = Intent.createChooser(sendIntent, null)
 
-        ContextCompat.startActivity(view.context, smsIntent, null)
+        ContextCompat.startActivity(view.context, shareIntent, null)
     }
 
     private fun updateUser(db: SQLiteDatabase, value: ContentValues) {

@@ -18,6 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name=".database.MyContentProvider"
+            android:exported="true"
+            android:readPermission="true"
+            android:writePermission="true"
+            android:authorities="com.example.prm_project_dusigrosz" />
     </application>
 
 </manifest>
